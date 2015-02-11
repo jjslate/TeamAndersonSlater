@@ -23,15 +23,12 @@ public class PhraseControlTest {
     @Test
     public void testCalcShrekHappiness() {
         System.out.println("calcShrekHappiness");
-        double friendlyPhrase = 6;
-        double currentMood = 5;
-        double Happiness = 10;
+        double friendlyPhrase = 4.0;
         PhraseControl instance = new PhraseControl();
-        double expResult = 11;
-        double result = instance.calcShrekHappiness(friendlyPhrase, currentMood, Happiness);
+        double expResult = 11.0;
+        double result = instance.calcShrekHappiness(friendlyPhrase);
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
     
 }

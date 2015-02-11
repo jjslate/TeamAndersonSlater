@@ -10,16 +10,18 @@ package CandJ.shrekanddonkey.control;
  * @author Jayson
  */
 public class PhraseControl {
-    public double calcShrekHappiness(double friendlyPhrase, double currentMood, double Happiness) {
-        currentMood = 5;
+    public double calcShrekHappiness(double friendlyPhrase) {
+        double currentMood = 5;
+        double happiness = currentMood + friendlyPhrase;
+        
         if (friendlyPhrase < 5) {
                 return -1;
     }
-        if (Happiness < 10) {
+        if (happiness < 10) {
             return -1;
         }
-        Happiness = currentMood + friendlyPhrase;
+       
         
-        return Happiness;
+        return happiness;
     }
 }
