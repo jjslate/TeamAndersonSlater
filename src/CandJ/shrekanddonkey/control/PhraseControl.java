@@ -24,4 +24,17 @@ public class PhraseControl {
         
         return happiness;
     }
+    public double calcShrekAnger(double annoyingPhrase) {
+        double currentMood = 5;
+        double anger = currentMood + annoyingPhrase;
+        
+        if (annoyingPhrase > 0) {
+            return -1;
+        }
+        if (anger > 5) {
+            return -1;
+        }
+        
+        return anger;
+    }
 }
