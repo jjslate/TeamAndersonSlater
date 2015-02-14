@@ -10,5 +10,14 @@ package CandJ.shrekanddonkey.control;
  * @author Jayson
  */
 public class LocationControl {
-    
+    public double clacLocation(double longitude, double latitude) {
+        double location = longitude + latitude;
+        if (longitude < 1) {
+            return -1;
+                    }
+        if (latitude < 1) {
+            return -1;
+        }
+        return location;
+    }
 }
