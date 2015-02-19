@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package CandJ.shrekanddonkey.view;
 
-/**
- *
- * @author Jayson
- */
+import CandJ.shrekanddonkey.control.ProgramControl;
+import CandJ.shrekanddonkey.model.Player;
+
+
 public class StartProgramView {
     
     public StartProgramView() {
@@ -17,9 +13,18 @@ public class StartProgramView {
     public void startProgram() {
         
         this.displayBanner();
+        
+        String playerName = this.getPlayerName();
+        
+        Player player = ProgramControl.createPlayer(playerName);
+        
+        this.displayWelcomeMessage(player);
+        
+        MainMenuView mainMenu = new MainMenuView();
+        mainMenu.displayMenu();
     }
 
-    private void displayBanner() {
+    public void displayBanner() {
        System.out.println("\n\n*********************************************");
        
        System.out.println("*                                               *" 
@@ -38,5 +43,36 @@ public class StartProgramView {
                         +"\n* Good luck and may the odds be ever in your   *"
                         +"\n* favor.                                       *");
        System.out.println("*************************************************");
+     }
+
+    public String getPlayerName() {
+        boolean valid = false; 
+        String playerName = null;
+        Scanner keyboard = new Scanner(System.in);
+        
+        while(!valid) {
+            
+            System.out.println("Enter the player's name below:");
+            
+            playerName = keyboard.nextLine();
+            playerName = playerName.trim();
+            
+            if (playerName.length() < 2) {
+                System.out.println("Invalid name - the name must not be blank");
+                continue;
+                
+            }
+            break;
+        }
+        return playerName;
     }
+
+    public void displayWelcomeMessage(Player player) {
+        System.out.println("\n\n=============================================");
+        System.out.println("\tWelcome to the game " + player.getName());
+        System.out.println("\tWe hope you have a lot of fun!");
+        System.out.println("=============================================");
+               
+    }
+    
 }

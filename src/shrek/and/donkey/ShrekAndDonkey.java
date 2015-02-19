@@ -6,6 +6,7 @@
 package shrek.and.donkey;
 
 import CandJ.shrekanddonkey.model.Player;
+import CandJ.shrekanddonkey.view.StartProgramView;
 
 /**
  *
@@ -13,19 +14,32 @@ import CandJ.shrekanddonkey.model.Player;
  */
 public class ShrekAndDonkey {
     
+   private static Game currentGame = null;
+
+    public static Game getCurrentGame() {
+        return currentGame;
+    }
+
+    public static void setCurrentGame(Game currentGame) {
+        ShrekAndDonkey.currentGame = currentGame;
+    }
+
+    public static Player getPlayer() {
+        return player;
+    }
+
+    public static void setPlayer(Player player) {
+        ShrekAndDonkey.player = player;
+    }
+   private static Player player = null;
+   
    
     
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String[] args) {
-        Player playerOne = new Player();
-        
-        playerOne.setName("Fred Flintsone");
-        playerOne.setHighScore(7.00);
-        
-        String playerInfo = playerOne.toString();
-        System.out.println(playerInfo);
+        // create StartProgramView and start the program
+        StartProgramView startProgramView = new StartProgramView();
+        startProgramView.startProgram();
         
     }
     
