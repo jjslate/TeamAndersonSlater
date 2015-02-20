@@ -5,6 +5,8 @@
  */
 package shrekanddonkey;
 
+import CandJ.shrekanddonkey.model.Player;
+
 /**
  *
  * @author Owner
@@ -16,6 +18,10 @@ public class ShrekAndDonkey {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+    }
+
+    public static void setPlayer(Player player) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

@@ -5,6 +5,7 @@
  */
 package shrek.and.donkey;
 
+import CandJ.shrekanddonkey.model.Game;
 import CandJ.shrekanddonkey.model.Player;
 import CandJ.shrekanddonkey.view.StartProgramView;
 
@@ -15,7 +16,8 @@ import CandJ.shrekanddonkey.view.StartProgramView;
 public class ShrekAndDonkey {
     
    private static Game currentGame = null;
-
+   private static Player player = null;
+   
     public static Game getCurrentGame() {
         return currentGame;
     }
@@ -31,12 +33,7 @@ public class ShrekAndDonkey {
     public static void setPlayer(Player player) {
         ShrekAndDonkey.player = player;
     }
-   private static Player player = null;
-   
-   
-    
-
-    public static void main(String[] args) {
+   public static void main(String[] args) {
         // create StartProgramView and start the program
         StartProgramView startProgramView = new StartProgramView();
         startProgramView.startProgram();

@@ -3,6 +3,7 @@ package CandJ.shrekanddonkey.view;
 
 import CandJ.shrekanddonkey.control.ProgramControl;
 import CandJ.shrekanddonkey.model.Player;
+import java.util.Scanner;
 
 
 public class StartProgramView {
@@ -47,24 +48,24 @@ public class StartProgramView {
 
     public String getPlayerName() {
         boolean valid = false; 
-        String playerName = null;
+        String playersName = null;
         Scanner keyboard = new Scanner(System.in);
         
         while(!valid) {
             
             System.out.println("Enter the player's name below:");
             
-            playerName = keyboard.nextLine();
-            playerName = playerName.trim();
+            playersName = keyboard.nextLine();
+            playersName = playersName.trim();
             
-            if (playerName.length() < 2) {
+            if (playersName.length() < 2) {
                 System.out.println("Invalid name - the name must not be blank");
                 continue;
                 
             }
             break;
         }
-        return playerName;
+        return playersName;
     }
 
     public void displayWelcomeMessage(Player player) {

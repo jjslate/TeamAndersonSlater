@@ -7,15 +7,13 @@ import shrekanddonkey.ShrekAndDonkey;
 
 public class ProgramControl {
 
-    public static Player createPlayer(String playerName) {
-        System.out.println("\n**** createPlayer function called ****");
-        return null;
+    public static Player createPlayer(String name) {
         
-        if (playerName == null) {
+        if (name == null) {
             return null;
         }
         Player player = new Player();
-        player.setName(playerName);
+        player.setName(name);
         
         ShrekAndDonkey.setPlayer(player);
         
