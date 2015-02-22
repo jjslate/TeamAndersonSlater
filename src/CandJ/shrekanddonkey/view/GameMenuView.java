@@ -3,17 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package CandJ.shrekanddonkey.control;
-
-import CandJ.shrekanddonkey.model.Player;
+package CandJ.shrekanddonkey.view;
 
 /**
  *
- * @author Jayson
+ * @author Owner
  */
-public class GameControl {
+public class GameMenuView {
 
-    public static void createNewGame(Player player) {
+    void displayMenu() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
