@@ -20,7 +20,7 @@ public class FriendlyPhraseView {
             + "\n9 - Move four spaces"
             + "\n10 - Move five spaces"
             + "\nE - Exit"
-            + "\n-----------------------------------";
+            + "\n----------------------------------";
     
     public void displayMenu() {
         
@@ -44,10 +44,10 @@ public class FriendlyPhraseView {
 public void doAction(char choice) {
         
         switch (choice) {
-            case '6':
+            case '5':
                 this.moveOne();
                 break;
-            case '7':
+            case '6':
                 this.moveTwo();
                 break;
             case '8':
@@ -64,4 +64,6 @@ public void doAction(char choice) {
                 System.out.println("\n*** Invalid Selection *** Try Again");
                 break;
     }
+}
+}
     
