@@ -15,9 +15,9 @@ public class StartProgramView {
         
         this.displayBanner();
         
-        String playerName = this.getPlayerName();
+        String input = this.getInput();
         
-        Player player = ProgramControl.createPlayer(playerName);
+        Player player = ProgramControl.createPlayer(input);
         
         this.displayWelcomeMessage(player);
         
@@ -49,26 +49,26 @@ public class StartProgramView {
        System.out.println("*************************************************");
      }
 
-    public String getPlayerName() {
+    public String getInput() {
         boolean valid = false; 
-        String playersName = null;
+        String input = null;
         Scanner keyboard = new Scanner(System.in);
         
         while(!valid) {
             
             System.out.println("Enter the player's name below:");
             
-            playersName = keyboard.nextLine();
-            playersName = playersName.trim();
+            input = keyboard.nextLine();
+            input = input.trim();
             
-            if (playersName.length() < 2) {
+            if (input.length() < 2) {
                 System.out.println("Invalid name - the name must not be blank");
                 continue;
                 
             }
             break;
         }
-        return playersName;
+        return input;
     }
 
     public void displayWelcomeMessage(Player player) {

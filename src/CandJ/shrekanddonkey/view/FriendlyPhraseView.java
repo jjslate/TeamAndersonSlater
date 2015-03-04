@@ -5,6 +5,8 @@
  */
 package CandJ.shrekanddonkey.view;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Jayson
@@ -39,7 +41,25 @@ public class FriendlyPhraseView {
 }
 
     private String getInput() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        boolean valid = false; 
+        String input = null;
+        Scanner keyboard = new Scanner(System.in);
+        
+        while(!valid) {
+            
+            System.out.println("Enter the player's name below:");
+            
+            input = keyboard.nextLine();
+            input = input.trim();
+            
+            if (input.length() < 2) {
+                System.out.println("Invalid name - the name must not be blank");
+                continue;
+                
+            }
+            break;
+        }
+        return input;
     }
 public void doAction(char choice) {
         
