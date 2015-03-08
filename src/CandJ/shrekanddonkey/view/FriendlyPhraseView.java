@@ -47,6 +47,57 @@ public class FriendlyPhraseView {
         
         while(!valid) {
             
+            System.out.println("Enter phrase 6 - 10 to move:");
+            
+            input = keyboard.nextLine();
+            input = input.trim();
+            
+            if (input.hashCode() > 10) {
+                System.out.println("Invalid phrase - phrase must 6 - 10");
+                continue;
+                else (input.hashCode() < 6) {
+                System.out.println("Invalid phrase - phrase must 6 - 10");
+                continue;
+            }
+            }
+            break;
+        }
+        return input;
+    }
+public void doAction(char choice) {
+        
+        switch (choice) {
+            case 5:
+                this.moveOne();
+                break;
+            case 6:
+                this.moveTwo();
+                break;
+            case 8:
+                this.moveThree();
+                break;
+            case 9:
+                this.moveFour();
+                break;
+            case 10:
+                this.moveFive();    
+            case 'E':
+                return;
+            default:
+                System.out.println("\n*** Invalid Selection *** Try Again");
+                break;
+    }
+}
+
+    private void moveOne() {
+
+        private String getInput() {
+        boolean valid = false; 
+        String input = null;
+        Scanner keyboard = new Scanner(System.in);
+        
+        while(!valid) {
+            
             System.out.println("Enter the player's name below:");
             
             input = keyboard.nextLine();
@@ -61,29 +112,22 @@ public class FriendlyPhraseView {
         }
         return input;
     }
-public void doAction(char choice) {
-        
-        switch (choice) {
-            case '5':
-                this.moveOne();
-                break;
-            case '6':
-                this.moveTwo();
-                break;
-            case '8':
-                this.moveThree();
-                break;
-            case '9':
-                this.moveFour();
-                break;
-            case '10':
-                this.moveFive();    
-            case 'E':
-                return;
-            default:
-                System.out.println("\n*** Invalid Selection *** Try Again");
-                break;
+    
+
+    private void moveTwo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-}
+
+    private void moveThree() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void moveFour() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void moveFive() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
     
