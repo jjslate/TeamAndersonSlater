@@ -11,7 +11,8 @@ import java.util.Scanner;
  *
  * @author Jayson
  */
-public class FriendlyPhraseView {
+public class FriendlyPhraseView extends View {
+
     private final String MENU = "\n"
             + "\n----------------------------------"
             + "\n| Friendly Phrase                |"
@@ -23,49 +24,11 @@ public class FriendlyPhraseView {
             + "\n10 - Move five spaces"
             + "\nE - Exit"
             + "\n----------------------------------";
-    
-    public void displayMenu() {
-        
-        char selection = ' ';
-        do {
-            
-            System.out.println(MENU);
-            
-            String input = this.getInput();
-            selection = input.charAt(0);
-            
-            this.doAction(selection);           
-        
-        } while (selection != 'E');
-            
-}
 
-    private String getInput() {
-        boolean valid = false; 
-        String input = null;
-        Scanner keyboard = new Scanner(System.in);
-        
-        while(!valid) {
-            
-            System.out.println("Enter phrase 6 - 10 to move:");
-            
-            input = keyboard.nextLine();
-            input = input.trim();
-            
-            if (input.hashCode() > 10) {
-                System.out.println("Invalid phrase - phrase must 6 - 10");
-                continue;
-                else (input.hashCode() < 6) {
-                System.out.println("Invalid phrase - phrase must 6 - 10");
-                continue;
-            }
-            }
-            break;
-        }
-        return input;
-    }
-public void doAction(char choice) {
-        
+    @Override
+    public void doAction(String friendlyphrase) {
+
+        char choice = friendlyphrase.charAt(0);
         switch (choice) {
             case 5:
                 this.moveOne();
@@ -80,39 +43,16 @@ public void doAction(char choice) {
                 this.moveFour();
                 break;
             case 10:
-                this.moveFive();    
+                this.moveFive();
             case 'E':
                 return;
             default:
                 System.out.println("\n*** Invalid Selection *** Try Again");
                 break;
+        }
     }
-}
 
     private void moveOne() {
-
-        private String getInput() {
-        boolean valid = false; 
-        String input = null;
-        Scanner keyboard = new Scanner(System.in);
-        
-        while(!valid) {
-            
-            System.out.println("Enter the player's name below:");
-            
-            input = keyboard.nextLine();
-            input = input.trim();
-            
-            if (input.length() < 2) {
-                System.out.println("Invalid name - the name must not be blank");
-                continue;
-                
-            }
-            break;
-        }
-        return input;
-    }
-    
 
     private void moveTwo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -130,4 +70,3 @@ public void doAction(char choice) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
-    

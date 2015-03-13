@@ -27,19 +27,17 @@ public abstract class View implements ViewInterface {
     
     
     @Override
-    public void displayMenu() {
+    public void display() {
         
         char selection = ' ';
         do {
             
-            System.out.println(MENU);
+            System.out.println(promptMessage);
             
             String input = this.getInput();
-            selection = input.charAt(0);
             
-            this.doAction(selection);           
+            this.doAction(input);           
         
         } while (selection != 'E');
     }
-    return selection;
 }

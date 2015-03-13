@@ -9,7 +9,7 @@ package CandJ.shrekanddonkey.view;
  *
  * @author Owner
  */
-public class ViewInterface {
+public interface ViewInterface {
     
     public void display();
     public String getInput();
