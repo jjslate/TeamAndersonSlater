@@ -21,19 +21,4 @@ public class LocationsView extends View {
             + "\nE - Exit"
             + "\n----------------------------------";
     
-    public void displayMenu() {
-        
-        char selection = ' ';
-        do {
-            
-            System.out.println(MENU);
-            
-            String input = this.getInput();
-            selection = input.charAt(0);
-            
-            this.doAction(selection);           
-        
-        } while (selection != 'E');
-}
-
-
+   
