@@ -14,7 +14,19 @@ import CandJ.shrekanddonkey.model.Player;
 public class GameControl {
 
     public static void createNewGame(Player player) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    System.out.println("*** createNewGame in GameControl called ***");
+    
+    Game game = new Game();
+    ShrekAndDonkey.setCurrentGame(game);
+    
+    game.setPlayer(player);
+    
+    Obstacle[] obstacle = new Obstacle();
+    game.setObstacle(obstacle);
+    
+    Map map = MapControl.createMap();
+    game.setMap(map);
+      
     }
     
 }

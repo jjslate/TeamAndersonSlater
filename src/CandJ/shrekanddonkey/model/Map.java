@@ -13,7 +13,15 @@ import java.util.Objects;
  */
 public class Map implements Serializable{
 
-    public Map() {
+    private int noOfRows;
+    private int noOfColumn;
+    private Location[][] location;
+    
+    private static Map createMap() {
+        Map map = new Map(20, 20);
+        Scene[] scenes = createScenes();
+        GameControl.assignScenesToLocations(map, scenes);
+        return map;
     }
     
     private String rowNumber;

@@ -11,48 +11,25 @@ import java.util.Objects;
  *
  * @author Jayson
  */
-public class Actor implements Serializable {
-    private String name;
-
+public enum Actor implements Serializable {
+    
+    Shrek("He is an ogre on a quest to have his swamp back."),
+    Donkey("Shreks conpanion on the adventure."),
+    Lord Farquad("The Lord who sent Shrek on his quest."),
+    Fiona("The Princess that Lord Farquad sent Shrek to save."),
+    Dragon("Gaurds the castle of Princess Fiona.");
+    
+    private final String description;
+    private final Point coordinates;
+    
     public Actor() {
-    }
+
+        Actors(String description)
+            this.description = description;
+            coordinates = new Point(1,1);
+}
     
-    
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     @Override
     public String toString() {
         return "Actor{" + "name=" + name + '}';
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 23 * hash + Objects.hashCode(this.name);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Actor other = (Actor) obj;
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        return true;
-    }
-    
-    
-}

@@ -51,9 +51,30 @@ public class FriendlyPhraseView extends View {
                 break;
         }
     }
-
+@Override
+    public String getInput() {
+        boolean valid = false; 
+        String input = null;
+        Scanner keyboard = new Scanner(System.in);
+        
+        while(!valid) {
+            
+            System.out.println("Enter the player's name below:");
+            
+            input = keyboard.nextLine();
+            input = input.trim();
+            
+            if (input.length() < 2) {
+                System.out.println("Invalid name - the name must not be blank");
+                continue;
+                
+            }
+            break;
+        }
+        return input;
+    }
     private void moveOne() {
-
+    }
     private void moveTwo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
