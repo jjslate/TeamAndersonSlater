@@ -91,6 +91,10 @@ public class Game implements Serializable {
     public void setObstacle(Obstacle[] obstacle) {
         this.obstacle = obstacle;
     }
+
+    public void setObstacle(Obstacle obstacle) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
     

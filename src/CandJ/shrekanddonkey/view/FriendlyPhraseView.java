@@ -25,6 +25,10 @@ public class FriendlyPhraseView extends View {
             + "\nE - Exit"
             + "\n----------------------------------";
 
+    public FriendlyPhraseView(String promptMessage) {
+        super(promptMessage);
+    }
+
     @Override
     public void doAction(String friendlyphrase) {
 

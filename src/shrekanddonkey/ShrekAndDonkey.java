@@ -5,6 +5,7 @@
  */
 package shrekanddonkey;
 
+import CandJ.shrekanddonkey.model.Game;
 import CandJ.shrekanddonkey.model.Player;
 
 /**
@@ -21,6 +22,10 @@ public class ShrekAndDonkey {
     }
 
     public static void setPlayer(Player player) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static void setCurrentGame(Game game) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

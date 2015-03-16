@@ -22,7 +22,7 @@ public enum Actor implements Serializable {
     private final String description;
     private final Point coordinates;
     
-    public Actor() {
+    Actor() {
 
         Actors(String description)
             this.description = description;

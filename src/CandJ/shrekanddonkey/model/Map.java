@@ -5,6 +5,7 @@
  */
 package CandJ.shrekanddonkey.model;
 
+import CandJ.shrekanddonkey.control.GameControl;
 import java.io.Serializable;
 import java.util.Objects;
 /**
@@ -12,6 +13,10 @@ import java.util.Objects;
  * @author Owner
  */
 public class Map implements Serializable{
+
+    private static Scene[] createScenes() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     private int noOfRows;
     private int noOfColumn;
@@ -26,6 +31,10 @@ public class Map implements Serializable{
     
     private String rowNumber;
     private double columnNumber;
+
+    private Map(int i, int i0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     public String getRowNumber() {
         return rowNumber;

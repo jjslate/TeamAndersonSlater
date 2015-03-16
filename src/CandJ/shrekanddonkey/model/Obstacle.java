@@ -20,6 +20,10 @@ public class Obstacle implements Serializable{
     private String description;
     private String type;
 
+    public Obstacle() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public String getLocation() {
         return location;
     }
