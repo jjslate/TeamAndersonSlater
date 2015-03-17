@@ -5,6 +5,8 @@
  */
 package CandJ.shrekanddonkey.view;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Owner
@@ -39,5 +41,29 @@ public abstract class View implements ViewInterface {
             this.doAction(input);           
         
         } while (selection != 'E');
+    }
+
+    @Override
+    public void getInput() {
+        
+        boolean valid = false; 
+        String input = null;
+        Scanner keyboard = new Scanner(System.in);
+        
+        while(!valid) {
+            
+            System.out.println("Enter Command");
+            
+            input = keyboard.nextLine();
+            input = input.trim();
+            
+            if (input.length() < 2) {
+                System.out.println("Invalid name - the name must not be blank");
+                continue;
+                
+            }
+            break;
+        }
+        return input;
     }
 }
