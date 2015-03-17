@@ -34,9 +34,45 @@ public class GameControl {
       
     }
     public static Obstacle[] createObstacle() {
-        System.out.println("*** called createObstacle() in GameControl ***");
-        return null;
+        // created array(list) of obstacles
+        Obstacle obstacle = new Obstacle[5]
+        
+        Obstacle tree = new Obstacle();
+        tree.setDescription("Tree");
+        tree.setLocation(Forest);
+        obstacle[ListObstacle.tree.ordinal()] = tree;
+        
+        Obstacle boulder = new Obstacle();
+        boulder.setDescription("Boulder");
+        boulder.setLocation(Forest);
+        obstacle[ListObstacle.boulder.ordinal()] = boulder;
+        
+        Obstacle river = new Obstacle();
+        river.setDescription("River");
+        river.setLocation(Forest);
+        obstacle[ListObstacle.river.ordinal()] = river;
+        
+        Obstacle creature = new Obstacle();
+        creature.setDescription("creature");
+        creature.setLocation(Forest);
+        obstacle[ListObstacle.creature.ordinal()] = creature;
+        
+        Obstacle dragon = new Obstacle();
+        dragon.setDescription("Dragon");
+        dragon.setLocation(Castle);
+        obstacle[ListObstacle.dragon.ordinal()] = dragon;
+        
+        return obstacle;
+        
+        
     }
+    public enum ListObstacle {
+            tree,
+            boulder,
+            river,
+            creature,
+            dragon;
+        }
 
     public static void assignScenesToLocations(Map map, Scene[] scenes) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

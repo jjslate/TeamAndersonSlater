@@ -17,7 +17,7 @@ public class AnnoyingPhraseView {
             + "\n1 - Destroy Tree"
             + "\n2 - Destroy Boulder"
             + "\n3 - Cross River"
-            + "\n4 - Beat Enemy"
+            + "\n4 - Beat Dragon"
             + "\n5 - Beat Creature"
             + "\nE - Exit"
             + "\n----------------------------------";

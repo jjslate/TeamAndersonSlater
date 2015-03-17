@@ -14,9 +14,60 @@ import java.util.Objects;
  */
 public class Map implements Serializable{
 
-    private static Scene[] createScenes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private static Scene[] createScenes() throws MapControlException  {
+       BufferedImage image = null;
+       
+       Game game = ShrekAndDonkey.getCurrentGame();
+       
+       Scene[] scenes = new Scene[SceneType.values().length];
+       
+       Scene startingScene = new Scene();
+       startingScene.setDescription("\nLord Farquad has just commanded that you(Donkey) and Shrek "
+                                    + "go and rescue the Princess Fiona who is trapped in a castle "
+                                    + "far away. Here your journey begins at the entrance to the forest");
+       startingScene.setMapSymbol(" ST ");
+       startingScene.setBlocked(false);
+       startingScene.setTravelTime(240);
+       ImageIcon startingSceneImage = MapControl.getImage(startingScene,
+                    "C:\\Users\\Jayson\\Documents\\CIT 260\\ShrekandDonkeyForest.jpg");
+       startingScene.setIcon(startingSceneImage);
+       scenes[SceneType.start.ordinal()] = startingScene;
+       
+       Scene finishScene = new Scene();
+       finishScene.setDescription("\nCongratulations! You have rescued Princess Fiona."
+                                    + "On your way returning to Lord Farquad the Princess and Shrek"
+                                    + " fell in love. (Of course it only helped that Fiona "
+                                    + "actually transformed into an Ogre because she was cursed).");
+       finishScene.setMapSymbol(" FN ");
+       finishScene.setBlocked(false);
+       finishScene.setTravelTime(Double.POSITIVE_INFINITY);
+       ImageIcon finishSceneImage = MapControl.getImage(finishScene,
+                    "C:\\Users\\Jayson\\Documents\\CIT 260\\ShrekandFionaMarried.jpg");
+                    finishScene.setIcon(finishSceneImage);
+       scenes[SceneType.finish.ordinal()] = finishScene;
     }
+    public enum SceneType {
+        start,
+        fight,
+        argument,
+        trapped,
+        dragonfight,
+        rescue,
+        finish;
+    }
+    
+    private static void assignScenesToLocations(Map map, Scene[] scenes) {
+        Location[][] locations = map.getLocations();
+        
+        //start point
+        locations[0][0].setScene(scenes[SceneType.start.ordinal()]);
+        locations[0][1].setScene(scenes[SceneType.fight.ordinal()]);
+        locations[0][2].setScene(scenes[SceneType.argument.ordinal()]);
+        locations[0][3].setScene(scenes[SceneType.trapped.ordinal()]);
+        locations[1][0].setScene(scenes[SceneType.dragonfight.ordinal()]);
+        locations[1][1].setScene(scenes[SceneType.rescue.ordinal()]);
+        locations[1][2].setScene(scenes[SceneType.finish.ordinal()]);
+        
 
     private int noOfRows;
     private int noOfColumn;
@@ -29,12 +80,37 @@ public class Map implements Serializable{
         return map;
     }
     
-    private String rowNumber;
-    private double columnNumber;
-
-    private Map(int i, int i0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+ 
+    public Map(){
     }
+
+   
+    }
+    public Map(int noOfRows, int noOfColumns) {
+        if (noOfRows < 1 || noOfColumns < 1) {
+            System.out.println("The number of rows and columns must be > zero");
+            return;
+        }
+        this.noOfRows = noOfRows;
+        this.noOfColumns = noOfColumns;
+
+        //create 2-D array for location
+        this.locations = new Location[noOfRows][noOfColumns];
+
+        for (int row = 0; row < noOfRows; row++) {
+            for(int column = 0; column < noOfColumns; column++) {
+                //create and initialize new location object instance
+                Location location = new Location();
+                location.setColumn(column);
+                location.setRow(row);
+                location.setVisited(false);
+
+                // assign the Location object to the current position in array
+                locations[row][column] = location;
+
+        }
+    }
+}
 
     public String getRowNumber() {
         return rowNumber;
