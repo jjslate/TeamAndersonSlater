@@ -56,17 +56,7 @@ public class Map implements Serializable{
         finish;
     }
     
-    private static void assignScenesToLocations(Map map, Scene[] scenes) {
-        Location[][] locations = map.getLocations();
-        
-        //start point
-        locations[0][0].setScene(scenes[SceneType.start.ordinal()]);
-        locations[0][1].setScene(scenes[SceneType.fight.ordinal()]);
-        locations[0][2].setScene(scenes[SceneType.argument.ordinal()]);
-        locations[0][3].setScene(scenes[SceneType.trapped.ordinal()]);
-        locations[1][0].setScene(scenes[SceneType.dragonfight.ordinal()]);
-        locations[1][1].setScene(scenes[SceneType.rescue.ordinal()]);
-        locations[1][2].setScene(scenes[SceneType.finish.ordinal()]);
+
         
 
     private int noOfRows;
@@ -80,10 +70,6 @@ public class Map implements Serializable{
         return map;
     }
     
- 
-    public Map(){
-    }
-
    
     }
     public Map(int noOfRows, int noOfColumns) {

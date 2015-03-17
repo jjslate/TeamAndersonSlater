@@ -15,21 +15,22 @@ public enum Actor implements Serializable {
     
     Shrek("He is an ogre on a quest to have his swamp back."),
     Donkey("Shreks conpanion on the adventure."),
-    Lord Farquad("The Lord who sent Shrek on his quest."),
+    Farquad("The Lord who sent Shrek on his quest."),
     Fiona("The Princess that Lord Farquad sent Shrek to save."),
-    Dragon("Gaurds the castle of Princess Fiona.");
+    Dragon("Guards the castle of Princess Fiona.");
     
     private final String description;
     private final Point coordinates;
-    
-    Actor() {
 
-        Actors(String description)
+  Actor(String description) {
             this.description = description;
             coordinates = new Point(1,1);
-}
-    
-    @Override
-    public String toString() {
-        return "Actor{" + "name=" + name + '}';
     }
+  public String getDescription() {
+      return description;
+  }
+  public Point getCoordinates() {
+      return coordinates;
+  }
+}   
+     

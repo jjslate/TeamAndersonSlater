@@ -6,6 +6,7 @@
 package CandJ.shrekanddonkey.control;
 
 import CandJ.shrekanddonkey.model.Game;
+import CandJ.shrekanddonkey.model.Location;
 import CandJ.shrekanddonkey.model.Map;
 import CandJ.shrekanddonkey.model.Obstacle;
 import CandJ.shrekanddonkey.model.Player;
@@ -35,31 +36,31 @@ public class GameControl {
     }
     public static Obstacle[] createObstacle() {
         // created array(list) of obstacles
-        Obstacle obstacle = new Obstacle[5]
+        Obstacle[] obstacle = new Obstacle[5];
         
         Obstacle tree = new Obstacle();
         tree.setDescription("Tree");
-        tree.setLocation(Forest);
+        tree.setLocation(forest);
         obstacle[ListObstacle.tree.ordinal()] = tree;
         
         Obstacle boulder = new Obstacle();
         boulder.setDescription("Boulder");
-        boulder.setLocation(Forest);
+        boulder.setLocation(forest);
         obstacle[ListObstacle.boulder.ordinal()] = boulder;
         
         Obstacle river = new Obstacle();
         river.setDescription("River");
-        river.setLocation(Forest);
+        river.setLocation(forest);
         obstacle[ListObstacle.river.ordinal()] = river;
         
         Obstacle creature = new Obstacle();
         creature.setDescription("creature");
-        creature.setLocation(Forest);
+        creature.setLocation(forest);
         obstacle[ListObstacle.creature.ordinal()] = creature;
         
         Obstacle dragon = new Obstacle();
         dragon.setDescription("Dragon");
-        dragon.setLocation(Castle);
+        dragon.setLocation(castle);
         obstacle[ListObstacle.dragon.ordinal()] = dragon;
         
         return obstacle;
@@ -75,7 +76,19 @@ public class GameControl {
         }
 
     public static void assignScenesToLocations(Map map, Scene[] scenes) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    }
-
+        
+    
+        Location[][] locations = map.getLocations();
+        
+        //start point
+        locations[0][0].setScene(scenes[Map.SceneType.start.ordinal()]);
+        locations[0][1].setScene(scenes[Map.SceneType.fight.ordinal()]);
+        locations[0][2].setScene(scenes[Map.SceneType.argument.ordinal()]);
+        locations[0][3].setScene(scenes[Map.SceneType.trapped.ordinal()]);
+        locations[1][0].setScene(scenes[Map.SceneType.dragonfight.ordinal()]);
+        locations[1][1].setScene(scenes[Map.SceneType.rescue.ordinal()]);
+        locations[1][2].setScene(scenes[Map.SceneType.finish.ordinal()]);
+        
+            }
+        }
+ 
