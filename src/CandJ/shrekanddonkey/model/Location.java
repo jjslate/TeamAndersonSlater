@@ -13,8 +13,12 @@ import java.util.Objects;
  * @author Jayson
  */
 public class Location implements Serializable {
-    private String row;
-    private String column;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -6873334917740756591L;
+	private int row;
+    private int column;
     private String explored;
     private String unexplored;
 
@@ -23,20 +27,20 @@ public class Location implements Serializable {
     
     
 
-    public String getRow() {
+    public int getRow() {
         return row;
     }
 
-    public void setRow(String row) {
-        this.row = row;
+    public void setRow(int row2) {
+        this.row = row2;
     }
 
-    public String getColumn() {
+    public int getColumn() {
         return column;
     }
 
-    public void setColumn(String column) {
-        this.column = column;
+    public void setColumn(int column2) {
+        this.column = column2;
     }
 
     public String getExplored() {
@@ -93,6 +97,20 @@ public class Location implements Serializable {
         }
         return true;
     }
+
+
+
+	public void setScene(Scene scene) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	public void setVisited(boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
      
     
 }
