@@ -28,6 +28,11 @@ public class FriendlyPhraseView extends View {
     public FriendlyPhraseView(String promptMessage) {
         super(promptMessage);
     }
+    
+ public void displayMenu() {
+        
+   
+    }
 
     @Override
     public void doAction(String friendlyphrase) {

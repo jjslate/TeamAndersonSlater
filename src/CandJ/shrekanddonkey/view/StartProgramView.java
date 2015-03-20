@@ -2,7 +2,9 @@
 package CandJ.shrekanddonkey.view;
 
 import CandJ.shrekanddonkey.control.ProgramControl;
+import CandJ.shrekanddonkey.exceptions.MapControlException;
 import CandJ.shrekanddonkey.model.Player;
+
 import java.util.Scanner;
 
 
@@ -11,7 +13,7 @@ public class StartProgramView {
     public StartProgramView() {
         
     }
-    public void startProgram() {
+    public void startProgram() throws MapControlException {
         
         this.displayBanner();
         
@@ -24,7 +26,7 @@ public class StartProgramView {
         MainMenuView mainMenu = new MainMenuView();
         mainMenu.displayMenu();
         
-        FriendlyPhraseView friendlyPhrase = new FriendlyPhraseView();
+        FriendlyPhraseView friendlyPhrase = new FriendlyPhraseView(input);
         friendlyPhrase.displayMenu();
     }
 

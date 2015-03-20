@@ -13,8 +13,11 @@ import java.util.Objects;
  */
 public class Obstacle implements Serializable{
 
-    public Obstacle() {
-    }
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3587097585892152605L;
+
     
     private String location;
     private String description;

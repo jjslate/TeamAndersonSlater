@@ -5,13 +5,14 @@
  */
 package CandJ.shrekanddonkey.control;
 
+import CandJ.shrekanddonkey.exceptions.MapControlException;
 import CandJ.shrekanddonkey.model.Game;
 import CandJ.shrekanddonkey.model.Location;
 import CandJ.shrekanddonkey.model.Map;
 import CandJ.shrekanddonkey.model.Obstacle;
 import CandJ.shrekanddonkey.model.Player;
 import CandJ.shrekanddonkey.model.Scene;
-import shrekanddonkey.ShrekAndDonkey;
+import shrek.and.donkey.ShrekAndDonkey;
 
 /**
  *
@@ -19,7 +20,7 @@ import shrekanddonkey.ShrekAndDonkey;
  */
 public class GameControl {
 
-    public static void createNewGame(Player player) {
+    public static void createNewGame(Player player) throws MapControlException {
     System.out.println("*** createNewGame in GameControl called ***");
     
     Game game = new Game();
@@ -40,27 +41,27 @@ public class GameControl {
         
         Obstacle tree = new Obstacle();
         tree.setDescription("Tree");
-        tree.setLocation(forest);
+        tree.setLocation("forest");
         obstacle[ListObstacle.tree.ordinal()] = tree;
         
         Obstacle boulder = new Obstacle();
         boulder.setDescription("Boulder");
-        boulder.setLocation(forest);
+        boulder.setLocation("forest");
         obstacle[ListObstacle.boulder.ordinal()] = boulder;
         
         Obstacle river = new Obstacle();
         river.setDescription("River");
-        river.setLocation(forest);
+        river.setLocation("forest");
         obstacle[ListObstacle.river.ordinal()] = river;
         
         Obstacle creature = new Obstacle();
         creature.setDescription("creature");
-        creature.setLocation(forest);
+        creature.setLocation("forest");
         obstacle[ListObstacle.creature.ordinal()] = creature;
         
         Obstacle dragon = new Obstacle();
         dragon.setDescription("Dragon");
-        dragon.setLocation(castle);
+        dragon.setLocation("castle");
         obstacle[ListObstacle.dragon.ordinal()] = dragon;
         
         return obstacle;

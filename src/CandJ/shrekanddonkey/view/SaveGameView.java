@@ -10,15 +10,20 @@ package CandJ.shrekanddonkey.view;
  *
  * @author Owner
  */
-public class SaveGameView {
-    private final String MENU = "\n"
+public class SaveGameView extends View {
+    public SaveGameView(String promptMessage) {
+		super(promptMessage);
+		
+	}
+
+	private final String MENU = "\n"
             + "\n------------------------"
             + "\n| Save Game                 |"
             + "\nY - Yes"
             + "\nN - No"
             + "\nE - Exit"
             + "\n------------------------";
-}
+
 public void displayMenu() {
         
         char selection = ' ';
@@ -28,7 +33,17 @@ public void displayMenu() {
             
             String input = this.getInput();
             selection = input.charAt(0);
-            
-            this.doAction(selection);           
+            String selectionString = String.valueOf(selection);
+            this.doAction(selectionString);           
         
         } while (selection != 'E');
+        
+}
+
+@Override
+public void doAction(String value) {
+	
+}
+}
+
+

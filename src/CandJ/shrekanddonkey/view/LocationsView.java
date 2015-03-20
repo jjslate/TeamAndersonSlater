@@ -10,7 +10,11 @@ package CandJ.shrekanddonkey.view;
  * @author Jayson
  */
 public class LocationsView extends View {
-    private final String MENU = "\n"
+    public LocationsView(String promptMessage) {
+		super(promptMessage);
+	}
+
+	private final String MENU = "\n"
             + "\n----------------------------------"
             + "\n| Locations                       |"
             + "\n ---------------------------------"
@@ -20,5 +24,12 @@ public class LocationsView extends View {
             + "\nS - Swamp"
             + "\nE - Exit"
             + "\n----------------------------------";
+
+	@Override
+	public void doAction(String value) {
+		
+	}
+	
+}
     
    

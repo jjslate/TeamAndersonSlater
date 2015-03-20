@@ -44,7 +44,7 @@ public abstract class View implements ViewInterface {
     }
 
     @Override
-    public void getInput() {
+    public String getInput() {
         
         boolean valid = false; 
         String input = null;
