@@ -13,36 +13,39 @@ import java.util.Scanner;
  */
 public class FriendlyPhraseView extends View {
 
-    private final String MENU = "\n"
-            + "\n----------------------------------"
-            + "\n| Friendly Phrase                |"
-            + "\n ---------------------------------"
-            + "\n6 - Move one space"
-            + "\n7 - Move two spaces"
-            + "\n8 - Move three spaces"
-            + "\n9 - Move four spaces"
-            + "\n10 - Move five spaces"
-            + "\nE - Exit"
-            + "\n----------------------------------";
+   
 
+    private String promptMessage;
+    
     public FriendlyPhraseView(String promptMessage) {
         super(promptMessage);
-    }
-    
- public void displayMenu() {
-        
-   
+        this.promptMessage = promptMessage;
     }
 
+    @Override
+    public void display() {
+        
+        char selection = ' ';
+        do {
+            
+            System.out.println(promptMessage);
+            
+            String input = this.getInput();
+            
+            this.doAction(input);           
+        
+        } while (selection != 'E');
+    }
+    
     @Override
     public void doAction(String friendlyphrase) {
 
         char choice = friendlyphrase.charAt(0);
         switch (choice) {
-            case 5:
+            case 6:
                 this.moveOne();
                 break;
-            case 6:
+            case 7:
                 this.moveTwo();
                 break;
             case 8:
@@ -68,13 +71,20 @@ public class FriendlyPhraseView extends View {
         
         while(!valid) {
             
-            System.out.println("Enter the player's name below:");
+            System.out.println("Enter number of spaces below:");
             
             input = keyboard.nextLine();
             input = input.trim();
             
-            if (input.length() < 2) {
-                System.out.println("Invalid name - the name must not be blank");
+            try{
+            int nInput = Integer.parseInt(input);
+            }
+            catch(NumberFormatException e){
+                                System.out.println("Number can only be 6,7,8,9,10" + e.getMessage());
+                continue;
+            }
+                    if (input.length() > 2) {
+                System.out.println("Number can only be 6,7,8,9,10");
                 continue;
                 
             }

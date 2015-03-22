@@ -8,17 +8,24 @@ package CandJ.shrekanddonkey.model;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Owner
  */
 public class Scene implements Serializable{
 
-    public Scene() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7428008971531878478L;
+
+	public Scene() {
     }
     
     private String explored;
-    private double description;
+    private String description;
 
     public String getExplored() {
         return explored;
@@ -28,11 +35,11 @@ public class Scene implements Serializable{
         this.explored = explored;
     }
 
-    public double getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(double description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
@@ -45,7 +52,6 @@ public class Scene implements Serializable{
     public int hashCode() {
         int hash = 7;
         hash = 67 * hash + Objects.hashCode(this.explored);
-        hash = 67 * hash + (int) (Double.doubleToLongBits(this.description) ^ (Double.doubleToLongBits(this.description) >>> 32));
         return hash;
     }
 
@@ -61,11 +67,28 @@ public class Scene implements Serializable{
         if (!Objects.equals(this.explored, other.explored)) {
             return false;
         }
-        if (Double.doubleToLongBits(this.description) != Double.doubleToLongBits(other.description)) {
-            return false;
-        }
         return true;
     }
+
+	public void setMapSymbol(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setBlocked(boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setTravelTime(double i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setIcon(ImageIcon startingSceneImage) {
+		// TODO Auto-generated method stub
+		
+	}
     
     
     

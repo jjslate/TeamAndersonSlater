@@ -5,6 +5,7 @@
  */
 package shrek.and.donkey;
 
+import CandJ.shrekanddonkey.exceptions.MapControlException;
 import CandJ.shrekanddonkey.model.Game;
 import CandJ.shrekanddonkey.model.Player;
 import CandJ.shrekanddonkey.view.StartProgramView;
@@ -33,7 +34,7 @@ public class ShrekAndDonkey {
     public static void setPlayer(Player player) {
         ShrekAndDonkey.player = player;
     }
-   public static void main(String[] args) {
+   public static void main(String[] args) throws MapControlException {
         // create StartProgramView and start the program
         StartProgramView startProgramView = new StartProgramView();
         startProgramView.startProgram();

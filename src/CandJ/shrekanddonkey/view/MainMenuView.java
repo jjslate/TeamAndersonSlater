@@ -6,6 +6,7 @@
 package CandJ.shrekanddonkey.view;
 
 import CandJ.shrekanddonkey.control.GameControl;
+import CandJ.shrekanddonkey.exceptions.MapControlException;
 import shrek.and.donkey.ShrekAndDonkey;
 
 /**
@@ -23,7 +24,7 @@ public class MainMenuView {
             + "\nE - Exit"
             + "\n------------------------";
     
-    public void displayMenu() {
+    public void displayMenu() throws MapControlException {
         
         char selection = ' ';
         do {
@@ -42,7 +43,7 @@ public class MainMenuView {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void doAction(char choice) {
+    public void doAction(char choice) throws MapControlException {
         
         switch (choice) {
             case 'N':
@@ -66,13 +67,12 @@ public class MainMenuView {
     
 }  
 
-    private void startNewGame() {
+    private void startNewGame() throws MapControlException {
         System.out.println("\n*** startNewGame funtion called ***");
         GameControl.createNewGame(ShrekAndDonkey.getPlayer());
-        
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
-        
+        String MENU = "";
+        GameMenuView gameMenu = new GameMenuView(MENU);
+        gameMenu.display();
     }
 
     private void startExistingGame() {

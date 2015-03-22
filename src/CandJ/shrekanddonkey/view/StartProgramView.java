@@ -26,8 +26,7 @@ public class StartProgramView {
         MainMenuView mainMenu = new MainMenuView();
         mainMenu.displayMenu();
         
-        FriendlyPhraseView friendlyPhrase = new FriendlyPhraseView(input);
-        friendlyPhrase.displayMenu();
+        
     }
 
     public void displayBanner() {

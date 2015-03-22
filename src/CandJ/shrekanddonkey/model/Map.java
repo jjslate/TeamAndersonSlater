@@ -154,6 +154,7 @@ public class Map implements Serializable{
 	                    "C:\\Users\\Jayson\\Documents\\CIT 260\\ShrekandFionaMarried.jpg");
 	                    finishScene.setIcon(finishSceneImage);
 	       scenes[SceneType.finish.ordinal()] = finishScene;
+               return scenes;
 	    }
 	   
 	   public static Map createMap() throws MapControlException {

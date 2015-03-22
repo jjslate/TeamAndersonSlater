@@ -2,7 +2,7 @@
 package CandJ.shrekanddonkey.control;
 
 import CandJ.shrekanddonkey.model.Player;
-import shrekanddonkey.ShrekAndDonkey;
+import shrek.and.donkey.ShrekAndDonkey;
 
 
 public class ProgramControl {
