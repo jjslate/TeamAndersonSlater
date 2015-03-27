@@ -9,7 +9,7 @@ package CandJ.shrekanddonkey.view;
  *
  * @author Owner
  */
-public class AnnoyingPhraseView {
+public class AnnoyingPhraseView extends View {
     private final String MENU = "\n"
             + "\n----------------------------------"
             + "\n| Friendly Phrase                |"
@@ -21,13 +21,17 @@ public class AnnoyingPhraseView {
             + "\n5 - Beat Creature"
             + "\nE - Exit"
             + "\n----------------------------------";
+
+    public AnnoyingPhraseView() {
+        super();
+    }
     
     public void displayMenu() {
         
         char selection = ' ';
         do {
             
-            System.out.println(MENU);
+            this.console.println(MENU);
             
             String input = this.getInput();
             selection = input.charAt(0);
@@ -38,7 +42,8 @@ public class AnnoyingPhraseView {
             
 }
 
-    private String getInput() {
+    @Override
+    public String getInput() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 public void doAction(char choice) {
@@ -61,7 +66,7 @@ public void doAction(char choice) {
             case 'E':
                 return;
             default:
-                System.out.println("\n*** Invalid Selection *** Try Again");
+                ErrorView.display("AnnoyingPhraseView.doAction()", "\n*** Invalid Selection *** Try Again");
                 break;
 }
 }
@@ -83,6 +88,11 @@ public void doAction(char choice) {
     }
 
     private void beatCreature() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void doAction(String value) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

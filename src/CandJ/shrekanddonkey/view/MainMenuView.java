@@ -13,9 +13,22 @@ import shrek.and.donkey.ShrekAndDonkey;
  *
  * @author Jayson
  */
-public class MainMenuView {
+public class MainMenuView extends View {
 
-    private final String MENU = "\n"
+
+    public MainMenuView() {
+        super();
+    }
+
+    
+
+    
+    
+    public void displayMenu() throws MapControlException {
+        
+        char selection = ' ';
+        do {
+            this.setPromptMessage("\n"
             + "\n------------------------"
             + "\n| Menu                 |"
             + "\nN - Start Game"
@@ -23,14 +36,8 @@ public class MainMenuView {
             + "\nH - Get Help"
             + "\nS - Save Game"
             + "\nE - Exit"
-            + "\n------------------------";
-    
-    public void displayMenu() throws MapControlException {
-        
-        char selection = ' ';
-        do {
-            
-            System.out.println(MENU);
+            + "\n------------------------");
+            this.console.println(this.getPromptMessage());
             
             String input = this.getInput();
             selection = input.charAt(0);
@@ -40,7 +47,7 @@ public class MainMenuView {
         } while (selection != 'E');
     }
 
-    private String getInput() {
+    public String getInput() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -62,30 +69,30 @@ public class MainMenuView {
             case 'E':
                 return;
             default:
-                System.out.println("\n*** Invalid Selection *** Try Again");
+                ErrorView.display("MainMenuView", "\n*** Invalid Selection *** Try Again");
                 break;
     }
     
 }  
 
     private void startNewGame() throws MapControlException {
-        System.out.println("\n*** startNewGame funtion called ***");
+        this.console.println("\n*** startNewGame funtion called ***");
         GameControl.createNewGame(ShrekAndDonkey.getPlayer());
-        String MENU = "";
-        GameMenuView gameMenu = new GameMenuView(MENU);
+      
+        GameMenuView gameMenu = new GameMenuView();
         gameMenu.display();
     }
 
     private void startExistingGame() {
-        System.out.println("\n*** startExistingGame funtion called ***");
+        this.console.println("\n*** startExistingGame funtion called ***");
     }
 
     private void displayHelpMenu() {
-        System.out.println("\n*** displayHelpMenu funtion called ***");
+        this.console.println("\n*** displayHelpMenu funtion called ***");
     }
 
     private void saveGame() {
-        System.out.println("\nEnter file path where the game will be saved.");
+        this.console.println("\nEnter file path where the game will be saved.");
         
         String filePath = this.getInput();
         
@@ -94,6 +101,11 @@ public class MainMenuView {
         } catch (Exception ex) {
             ErrorView.display("MainMenuView", ex.getMessage());
         }
+    }
+
+    @Override
+    public void doAction(String value) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
     

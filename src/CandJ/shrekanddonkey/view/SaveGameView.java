@@ -11,8 +11,8 @@ package CandJ.shrekanddonkey.view;
  * @author Owner
  */
 public class SaveGameView extends View {
-    public SaveGameView(String promptMessage) {
-		super(promptMessage);
+    public SaveGameView() {
+		super();
 		
 	}
 
@@ -29,7 +29,7 @@ public void displayMenu() {
         char selection = ' ';
         do {
             
-            System.out.println(MENU);
+            this.console.println(MENU);
             
             String input = this.getInput();
             selection = input.charAt(0);

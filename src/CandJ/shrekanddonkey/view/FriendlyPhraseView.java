@@ -5,7 +5,10 @@
  */
 package CandJ.shrekanddonkey.view;
 
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -14,12 +17,9 @@ import java.util.Scanner;
 public class FriendlyPhraseView extends View {
 
    
-
-    private String promptMessage;
     
-    public FriendlyPhraseView(String promptMessage) {
-        super(promptMessage);
-        this.promptMessage = promptMessage;
+    public FriendlyPhraseView() {
+        super();
     }
 
     @Override
@@ -27,8 +27,18 @@ public class FriendlyPhraseView extends View {
         
         char selection = ' ';
         do {
-            
-            System.out.println(promptMessage);
+            this.setPromptMessage("\n"
+            + "\n----------------------------------"
+            + "\n| Friendly Phrase                |"
+            + "\n ---------------------------------"
+            + "\n6 - Move one space"
+            + "\n7 - Move two spaces"
+            + "\n8 - Move three spaces"
+            + "\n9 - Move four spaces"
+            + "\n10 - Move five spaces"
+            + "\nE - Exit"
+            + "\n----------------------------------");
+            this.console.println(this.getPromptMessage());
             
             String input = this.getInput();
             
@@ -59,7 +69,7 @@ public class FriendlyPhraseView extends View {
             case 'E':
                 return;
             default:
-                System.out.println("\n*** Invalid Selection *** Try Again");
+                ErrorView.display("FriendlyPhraseView", "\n*** Invalid Selection *** Try Again");
                 break;
         }
     }
@@ -67,24 +77,28 @@ public class FriendlyPhraseView extends View {
     public String getInput() {
         boolean valid = false; 
         String input = null;
-        Scanner keyboard = new Scanner(System.in);
+        
         
         while(!valid) {
             
-            System.out.println("Enter number of spaces below:");
+            this.console.println("Enter number of spaces below:");
             
-            input = keyboard.nextLine();
+            try {
+                input = this.keyboard.readLine();
+            } catch (IOException ex) {
+                Logger.getLogger(FriendlyPhraseView.class.getName()).log(Level.SEVERE, null, ex);
+            }
             input = input.trim();
             
             try{
             int nInput = Integer.parseInt(input);
             }
             catch(NumberFormatException e){
-                                System.out.println("Number can only be 6,7,8,9,10" + e.getMessage());
+                                this.console.println("Number can only be 6,7,8,9,10" + e.getMessage());
                 continue;
             }
                     if (input.length() > 2) {
-                System.out.println("Number can only be 6,7,8,9,10");
+                this.console.println("Number can only be 6,7,8,9,10");
                 continue;
                 
             }

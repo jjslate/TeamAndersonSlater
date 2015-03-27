@@ -24,8 +24,8 @@ public abstract class View implements ViewInterface {
     protected final BufferedReader keyboard = ShrekAndDonkey.getInFile();
     protected final PrintWriter console = ShrekAndDonkey.getOutFile();
 
-    public View(String promptMessage) {
-        this.promptMessage = promptMessage;
+    public View() {
+        super();
     }
 
     private String promptMessage;
@@ -61,7 +61,7 @@ public abstract class View implements ViewInterface {
 
         while (!valid) {
 
-            System.out.println("Enter Command");
+            this.console.println("Enter Command");
 
             try {
                 input = this.keyboard.readLine();
@@ -71,7 +71,7 @@ public abstract class View implements ViewInterface {
             input = input.trim();
 
             if (input.length() < 2) {
-                System.out.println("Invalid name - the name must not be blank");
+                ErrorView.display("View", "Invalid name - the name must not be blank");
                 continue;
 
             }

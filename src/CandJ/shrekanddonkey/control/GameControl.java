@@ -5,6 +5,7 @@
  */
 package CandJ.shrekanddonkey.control;
 
+import CandJ.shrekanddonkey.exceptions.GameControlException;
 import CandJ.shrekanddonkey.exceptions.MapControlException;
 import CandJ.shrekanddonkey.model.Game;
 import CandJ.shrekanddonkey.model.Location;
@@ -12,6 +13,9 @@ import CandJ.shrekanddonkey.model.Map;
 import CandJ.shrekanddonkey.model.Obstacle;
 import CandJ.shrekanddonkey.model.Player;
 import CandJ.shrekanddonkey.model.Scene;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import shrek.and.donkey.ShrekAndDonkey;
 
 /**
@@ -69,8 +73,28 @@ public class GameControl {
         
     }
 
+    public static void saveGame(Game currentGame, String filePath, String filepath) {
+          throws GameControlException {
+        
+        try( FileOutputStream fops = new FileOutputStream(filepath)) {
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            
+            output.writeObject(currentGame); 
+        }
+        catch(IOException e) {
+            throw new GameControlException(e.getMessage());
+        }
+        }
+    }
+
+    public static void assignScenesToLocations(Map map, Scene[] scenes) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public static void saveGame(Game currentGame, String filePath) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+         
     }
     public enum ListObstacle {
             tree,

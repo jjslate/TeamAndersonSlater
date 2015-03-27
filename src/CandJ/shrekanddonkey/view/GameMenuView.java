@@ -10,18 +10,17 @@ package CandJ.shrekanddonkey.view;
  * @author Owner
  */
 public class GameMenuView extends View {
-    private String promptMessage;
-    public GameMenuView(String promptMessage){
-        super(promptMessage);
-        this.promptMessage = promptMessage;
+    public GameMenuView(){
+        super();
+        
     }
    @Override
     public void display() {
         
         char selection = ' ';
         do {
-            
-            System.out.println(promptMessage);
+            this.setPromptMessage(null);
+            this.console.println(this.getPromptMessage());
             
             String input = this.getInput();
             
@@ -56,18 +55,8 @@ public class GameMenuView extends View {
     }
     
     private void viewFriendlyPhrase(){
-          String MENU = "\n"
-            + "\n----------------------------------"
-            + "\n| Friendly Phrase                |"
-            + "\n ---------------------------------"
-            + "\n6 - Move one space"
-            + "\n7 - Move two spaces"
-            + "\n8 - Move three spaces"
-            + "\n9 - Move four spaces"
-            + "\n10 - Move five spaces"
-            + "\nE - Exit"
-            + "\n----------------------------------";
-        FriendlyPhraseView friendlyPhrase = new FriendlyPhraseView(MENU);
+          
+        FriendlyPhraseView friendlyPhrase = new FriendlyPhraseView();
         friendlyPhrase.display();
         
     }

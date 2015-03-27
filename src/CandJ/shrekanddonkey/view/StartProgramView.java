@@ -4,15 +4,22 @@ package CandJ.shrekanddonkey.view;
 import CandJ.shrekanddonkey.control.ProgramControl;
 import CandJ.shrekanddonkey.exceptions.MapControlException;
 import CandJ.shrekanddonkey.model.Player;
+import java.io.IOException;
 
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
-public class StartProgramView {
-    
+public class StartProgramView extends View {
+
     public StartProgramView() {
-        
+        super();
     }
+
+    
+    
+    
     public void startProgram() throws MapControlException {
         
         this.displayBanner();
@@ -30,9 +37,9 @@ public class StartProgramView {
     }
 
     public void displayBanner() {
-   System.out.println("\n\n*************************************************");
+   this.console.println("\n\n*************************************************");
        
-       System.out.println("*                                               *" 
+       this.console.println("*                                               *" 
                       + "\n* This is the Donkey and Shrek game             *"
                       + "\n* In this game you will take the role of        *"
                       + "\n* Donkey. Donkey's friend Shrek has a problem   *"
@@ -44,26 +51,30 @@ public class StartProgramView {
                       + "\n* Shrek either happy or angry. Angry to get     *"
                       + "\n* through obstacles and happy to continue the   *"
                       + "\n* quest.                                        *");
-       System.out.println("*                                               *"
+       this.console.println("*                                               *"
                        +"\n* Good luck and may the odds be ever in your    *"
                        +"\n* favor.                                        *");
-       System.out.println("*************************************************");
+       this.console.println("*************************************************");
      }
 
     public String getInput() {
         boolean valid = false; 
         String input = null;
-        Scanner keyboard = new Scanner(System.in);
+        
         
         while(!valid) {
             
-            System.out.println("Enter the player's name below:");
+            this.console.println("Enter the player's name below:");
             
-            input = keyboard.nextLine();
+            try {
+                input = this.keyboard.readLine();
+            } catch (IOException ex) {
+                Logger.getLogger(StartProgramView.class.getName()).log(Level.SEVERE, null, ex);
+            }
             input = input.trim();
             
             if (input.length() < 2) {
-                System.out.println("Invalid name - the name must not be blank");
+                ErrorView.display("StartProgramView", "Invalid name - the name must not be blank");
                 continue;
                 
             }
@@ -73,11 +84,16 @@ public class StartProgramView {
     }
 
     public void displayWelcomeMessage(Player player) {
-        System.out.println("\n\n=============================================");
-        System.out.println("\tWelcome to the game " + player.getName());
-        System.out.println("\tWe hope you have a lot of fun!");
-        System.out.println("=============================================");
+        this.console.println("\n\n=============================================");
+        this.console.println("\tWelcome to the game " + player.getName());
+        this.console.println("\tWe hope you have a lot of fun!");
+        this.console.println("=============================================");
                
+    }
+
+    @Override
+    public void doAction(String value) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
