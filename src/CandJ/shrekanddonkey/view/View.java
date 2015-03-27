@@ -5,7 +5,13 @@
  */
 package CandJ.shrekanddonkey.view;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import shrek.and.donkey.ShrekAndDonkey;
 
 /**
  *
@@ -13,10 +19,15 @@ import java.util.Scanner;
  */
 public abstract class View implements ViewInterface {
 
+    private String message;
+
+    protected final BufferedReader keyboard = ShrekAndDonkey.getInFile();
+    protected final PrintWriter console = ShrekAndDonkey.getOutFile();
+
     public View(String promptMessage) {
         this.promptMessage = promptMessage;
     }
-    
+
     private String promptMessage;
 
     public String getPromptMessage() {
@@ -26,41 +37,43 @@ public abstract class View implements ViewInterface {
     public void setPromptMessage(String promptMessage) {
         this.promptMessage = promptMessage;
     }
-    
-    
+
     @Override
     public void display() {
-        
+
         char selection = ' ';
         do {
-            
-            System.out.println(promptMessage);
-            
+
+            this.console.println(promptMessage);
+
             String input = this.getInput();
-            
-            this.doAction(input);           
-        
+
+            this.doAction(input);
+
         } while (selection != 'E');
     }
 
     @Override
     public String getInput() {
-        
-        boolean valid = false; 
+
+        boolean valid = false;
         String input = null;
-        Scanner keyboard = new Scanner(System.in);
-        
-        while(!valid) {
-            
+
+        while (!valid) {
+
             System.out.println("Enter Command");
-            
-            input = keyboard.nextLine();
+
+            try {
+                input = this.keyboard.readLine();
+            } catch (IOException ex) {
+                Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+            }
             input = input.trim();
-            
+
             if (input.length() < 2) {
                 System.out.println("Invalid name - the name must not be blank");
                 continue;
-                
+
             }
             break;
         }

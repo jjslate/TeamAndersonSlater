@@ -68,6 +68,10 @@ public class GameControl {
         
         
     }
+
+    public static void saveGame(Game currentGame, String filePath) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     public enum ListObstacle {
             tree,
             boulder,

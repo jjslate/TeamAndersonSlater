@@ -18,7 +18,8 @@ public class MainMenuView {
     private final String MENU = "\n"
             + "\n------------------------"
             + "\n| Menu                 |"
-            + "\nG - Start Game"
+            + "\nN - Start Game"
+            + "\nG - Get and start saved game"
             + "\nH - Get Help"
             + "\nS - Save Game"
             + "\nE - Exit"
@@ -84,7 +85,15 @@ public class MainMenuView {
     }
 
     private void saveGame() {
-        System.out.println("\n*** startExistingGame funtion called ***");
+        System.out.println("\nEnter file path where the game will be saved.");
+        
+        String filePath = this.getInput();
+        
+        try {
+            GameControl.saveGame(ShrekAndDonkey.getCurrentGame(), filePath);
+        } catch (Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
     }
 }
     
