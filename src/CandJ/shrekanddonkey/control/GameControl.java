@@ -13,8 +13,11 @@ import CandJ.shrekanddonkey.model.Map;
 import CandJ.shrekanddonkey.model.Obstacle;
 import CandJ.shrekanddonkey.model.Player;
 import CandJ.shrekanddonkey.model.Scene;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import shrek.and.donkey.ShrekAndDonkey;
 
@@ -73,8 +76,8 @@ public class GameControl {
         
     }
 
-    public static void saveGame(Game currentGame, String filePath, String filepath) {
-          throws GameControlException {
+    public static void saveGame(Game currentGame, String filepath) {
+          throw new GameControlException {
         
         try( FileOutputStream fops = new FileOutputStream(filepath)) {
             ObjectOutputStream output = new ObjectOutputStream(fops);
@@ -86,14 +89,34 @@ public class GameControl {
         }
         }
     }
+    
+    public static void getSavedGAme(String filepath)
+            throws GameControlException {
+        Game currentGame = null; 
+        try( FileInputStream fips = new FileInputStream(filepath)) {
+            ObjectInputSteam output = new ObjectInputStream(fips);
+            
+            currentGame = (Game) output.readObject();
+        }
+        catch(FileNotFoundException fnfe) {
+            throw new GameControlException(fnfe.getMessage());
+        }
+        catch(Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+        
+        ShrekAndDonkey.setCurrentGame(currentGame);
+        }
+
+    public static void getSavedGame(String filePath) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    }
 
     public static void assignScenesToLocations(Map map, Scene[] scenes) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public static void saveGame(Game currentGame, String filePath) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
          
     }
     public enum ListObstacle {
@@ -102,7 +125,7 @@ public class GameControl {
             river,
             creature,
             dragon;
-        }
+        
 
     public static void assignScenesToLocations(Map map, Scene[] scenes) {
         

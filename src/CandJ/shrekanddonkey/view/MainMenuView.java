@@ -58,7 +58,7 @@ public class MainMenuView extends View {
                 this.startNewGame();
                 break;
             case 'G':
-                this.startExistingGame();
+                this.startSavedGame();
                 break;
             case 'H':
                 this.displayHelpMenu();
@@ -83,9 +83,27 @@ public class MainMenuView extends View {
         gameMenu.display();
     }
 
-    private void startExistingGame() {
+    private void startSavedGame() {
         this.console.println("\n*** startExistingGame funtion called ***");
+        
+        String filePath = this.getInput();
+        
+        try {
+            
+            GameControl.getSavedGame(filePath);
+        } catch (Exception ex) {
+            ErrorView.display ("MainMenuView", ex.getMessage());
+        }
+        
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
+        }
+
+    @Override
+    public void doAction(String value) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
 
     private void displayHelpMenu() {
         this.console.println("\n*** displayHelpMenu funtion called ***");
@@ -103,9 +121,5 @@ public class MainMenuView extends View {
         }
     }
 
-    @Override
-    public void doAction(String value) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
     
