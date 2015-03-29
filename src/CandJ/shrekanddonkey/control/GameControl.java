@@ -94,7 +94,7 @@ public class GameControl {
             throws GameControlException {
         Game currentGame = null; 
         try( FileInputStream fips = new FileInputStream(filepath)) {
-            ObjectInputSteam output = new ObjectInputStream(fips);
+            ObjectInputStream output = new ObjectInputStream(fips);
             
             currentGame = (Game) output.readObject();
         }
