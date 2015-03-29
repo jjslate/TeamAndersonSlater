@@ -34,6 +34,7 @@ public class MainMenuView extends View {
             + "\nN - Start Game"
             + "\nG - Get and start saved game"
             + "\nH - Get Help"
+            + "\nP - Print report"        
             + "\nS - Save Game"
             + "\nE - Exit"
             + "\n------------------------");
@@ -63,6 +64,8 @@ public class MainMenuView extends View {
             case 'H':
                 this.displayHelpMenu();
                 break;
+            case 'P':
+                this.printReport();
             case 'S':
                 this.saveGame();
                 break;
@@ -119,6 +122,10 @@ public class MainMenuView extends View {
         } catch (Exception ex) {
             ErrorView.display("MainMenuView", ex.getMessage());
         }
+    }
+
+    private void printReport() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
