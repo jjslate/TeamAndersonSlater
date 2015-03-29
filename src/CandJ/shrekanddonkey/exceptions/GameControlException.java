@@ -9,7 +9,7 @@ package CandJ.shrekanddonkey.exceptions;
  *
  * @author Jayson
  */
-public class GameControlException {
+public class GameControlException extends Exception {
 
     public GameControlException(String message) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

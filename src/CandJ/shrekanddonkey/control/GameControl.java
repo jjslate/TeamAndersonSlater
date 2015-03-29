@@ -27,6 +27,13 @@ import shrek.and.donkey.ShrekAndDonkey;
  */
 public class GameControl {
 
+      public enum ListObstacle {
+            tree,
+            boulder,
+            river,
+            creature,
+            dragon;
+      }
     public static void createNewGame(Player player) throws MapControlException {
     System.out.println("*** createNewGame in GameControl called ***");
     
@@ -76,8 +83,12 @@ public class GameControl {
         
     }
 
-    public static void saveGame(Game currentGame, String filepath) {
-          throw new GameControlException {
+    /**
+     *
+     * @param currentGame
+     * @param filepath
+     */
+    public static void saveGame(Game currentGame, String filepath) throws GameControlException {
         
         try( FileOutputStream fops = new FileOutputStream(filepath)) {
             ObjectOutputStream output = new ObjectOutputStream(fops);
@@ -87,14 +98,14 @@ public class GameControl {
         catch(IOException e) {
             throw new GameControlException(e.getMessage());
         }
-        }
+        
     }
     
-    public static void getSavedGAme(String filepath)
+    public static void getSavedGame(String filepath)
             throws GameControlException {
         Game currentGame = null; 
         try( FileInputStream fips = new FileInputStream(filepath)) {
-            ObjectInputSteam output = new ObjectInputStream(fips);
+            ObjectInputStream output = new ObjectInputStream(fips);
             
             currentGame = (Game) output.readObject();
         }
@@ -106,27 +117,9 @@ public class GameControl {
         }
         
         ShrekAndDonkey.setCurrentGame(currentGame);
-        }
-
-    public static void getSavedGame(String filePath) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    }
-
-    public static void assignScenesToLocations(Map map, Scene[] scenes) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-         
-    }
-    public enum ListObstacle {
-            tree,
-            boulder,
-            river,
-            creature,
-            dragon;
-        
-
+    
+    
     public static void assignScenesToLocations(Map map, Scene[] scenes) {
         
     
@@ -142,5 +135,5 @@ public class GameControl {
         locations[1][2].setScene(scenes[Map.SceneType.finish.ordinal()]);
         
             }
-        }
+}
  
