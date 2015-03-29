@@ -124,9 +124,17 @@ public class MainMenuView extends View {
         }
     }
 
-    private void printReport() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    private void printReport() { // I think this might be the function for actually printing the report so this code maybe doesn't go here.
+        this.console.println() // this will prompt the user for a file path
+        
+        String filePath = this.getInput(); // getting the file path?
+   
+        try {
+            
+        } catch () {
+            ErrorView.display() // number 3 part e. catch all runtime exceptions?
+        }
+        }
 
 }
     
