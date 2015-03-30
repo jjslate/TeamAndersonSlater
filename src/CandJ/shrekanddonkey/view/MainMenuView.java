@@ -5,8 +5,17 @@
  */
 package CandJ.shrekanddonkey.view;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import CandJ.shrekanddonkey.control.GameControl;
 import CandJ.shrekanddonkey.exceptions.MapControlException;
+import CandJ.shrekanddonkey.model.Game;
 import shrek.and.donkey.ShrekAndDonkey;
 
 /**
@@ -26,7 +35,7 @@ public class MainMenuView extends View {
     
     public void displayMenu() throws MapControlException {
         
-        char selection = ' ';
+        String selection = "";
         do {
             this.setPromptMessage("\n"
             + "\n------------------------"
@@ -41,35 +50,58 @@ public class MainMenuView extends View {
             this.console.println(this.getPromptMessage());
             
             String input = this.getInput();
-            selection = input.charAt(0);
+            selection = input;
             
             this.doAction(selection);           
         
-        } while (selection != 'E');
+        } while (selection != "E");
     }
 
+    @Override
     public String getInput() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    	boolean valid = false;
+        String input = null;
 
-    public void doAction(char choice) throws MapControlException {
+        while (!valid) {
+
+            this.console.println("Enter Command");
+
+            try {
+                input = this.keyboard.readLine();
+            } catch (IOException ex) {
+                Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            input = input.trim();
+
+            if (input.length() < 2) {
+                ErrorView.display("View", "Invalid name - the name must not be blank");
+                continue;
+
+            }
+            break;
+        }
+        return input;
+        }
+
+   @Override
+    public void doAction(String choice) throws MapControlException {
         
         switch (choice) {
-            case 'N':
+            case "N":
                 this.startNewGame();
                 break;
-            case 'G':
+            case "G":
                 this.startSavedGame();
                 break;
-            case 'H':
+            case "H":
                 this.displayHelpMenu();
                 break;
-            case 'P':
+            case "P":
                 this.printReport();
-            case 'S':
+            case "S":
                 this.saveGame();
                 break;
-            case 'E':
+            case "E":
                 return;
             default:
                 ErrorView.display("MainMenuView", "\n*** Invalid Selection *** Try Again");
@@ -100,13 +132,7 @@ public class MainMenuView extends View {
         
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.display();
-        }
-
-    @Override
-    public void doAction(String value) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+        }    
 
     private void displayHelpMenu() {
         this.console.println("\n*** displayHelpMenu funtion called ***");
@@ -124,17 +150,43 @@ public class MainMenuView extends View {
         }
     }
 
-    private void printReport() { // I think this might be the function for actually printing the report so this code maybe doesn't go here.
-        this.console.println() // this will prompt the user for a file path
+    private void printReport() { 
+        this.console.println("\nEnter file path where the report is to be printed."); 
         
-        String filePath = this.getInput(); // getting the file path?
+        String filePath = this.getInput(); 
    
         try {
+        	this.printAction(filePath);
             
-        } catch () {
-            ErrorView.display() // number 3 part e. catch all runtime exceptions?
+        } catch (Exception e) {
+            ErrorView.display(filePath, e.getMessage()); // number 3 part e. catch all runtime exceptions?
         }
+        
+        this.console.println("Report printed successfully.");
+        
         }
 
+    
+    private void printAction(String filePath) throws IOException{
+    	FileOutputStream fops = new FileOutputStream(filePath);
+    	ObjectOutputStream output = new ObjectOutputStream(fops);
+    	
+    	
+    	
+    	this.console.println("        Game"
+				+ "/n"
+				+ "Actors          Player");
+    	Game game = new Game();
+    	String player = game.getPlayer().toString();
+    	for (int i = 0; i < 10; i++) {
+    		
+    		String listActors[] = game.getActors();
+    		this.console.println(listActors[i] +         player);
+    		
+			
+		}
+    	output.writeObject(game);	   	
+    	output.close();
+    }
 }
     

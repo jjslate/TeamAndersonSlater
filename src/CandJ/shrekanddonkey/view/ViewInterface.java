@@ -5,14 +5,16 @@
  */
 package CandJ.shrekanddonkey.view;
 
+import CandJ.shrekanddonkey.exceptions.MapControlException;
+
 /**
  *
  * @author Owner
  */
 public interface ViewInterface {
     
-    public void display();
+    public void display() throws MapControlException;
     public String getInput();
-    public void doAction(String value);
+    public void doAction(String value) throws MapControlException;
     
 }
